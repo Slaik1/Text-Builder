@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -12,29 +9,49 @@ namespace Text_Builder
 {
     class TextBuilder
     {
-        private RichTextBox textBox;
+        private RichTextBox rtBox;
         public TextBuilder(RichTextBox textBox)
         {
-            this.textBox = textBox;
+            this.rtBox = textBox;
         }
 
-        public string GetText() => new TextRange(textBox.Document.ContentStart, textBox.Document.ContentEnd).Text;
+        
 
-        public void SetText(string text)
-        {
-            textBox.Document.Blocks.Clear();
-            textBox.AppendText(text);
-        }
-
-        public void DeleteSymbols(string cymbols)
-        {
-            cymbols=cymbols.Replace(@"\\",@"\");
-            if (cymbols != null && cymbols != "")
+        public void TextReplace(string strOld, string strNew)
+        { 
+            if (strOld == "")
+                return;
+            TextRange tr = new TextRange(rtBox.Document.ContentStart, rtBox.Document.ContentEnd);
+            string? rtf;
+            using (var memoryStream = new MemoryStream())
             {
-                var text=GetText();
-                text = text.Replace(cymbols, "");
-                SetText(text);
+                tr.Save(memoryStream, DataFormats.Rtf);
+                rtf = ASCIIEncoding.Default.GetString(memoryStream.ToArray());
             }
+            rtf = rtf.Replace(ConvertString2RTF(strOld), ConvertString2RTF(strNew));
+            MemoryStream stream = new MemoryStream(ASCIIEncoding.Default.GetBytes(rtf));
+            rtBox.SelectAll();
+            rtBox.Selection.Load(stream, DataFormats.Rtf);
+        }
+
+        private string ConvertString2RTF(string input)
+        {
+            //first take care of special RTF chars  
+            StringBuilder backslashed = new StringBuilder(input);
+            backslashed.Replace(@"\", @"\\");
+            backslashed.Replace(@"{", @"\{");
+            backslashed.Replace(@"}", @"\}");
+
+            //then convert the string char by char  
+            StringBuilder sb = new StringBuilder();
+            foreach (char character in backslashed.ToString())
+            {
+                if (character <= 0x7f)
+                    sb.Append(character);
+                else
+                    sb.Append("\\u" + Convert.ToUInt32(character) + "?");
+            }
+            return sb.ToString();
         }
     }
 }

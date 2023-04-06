@@ -5,21 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Text_Builder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="592" Width="992" ResizeMode="NoResize" Initialized="WindowInitalized">
-    <Grid Height="NaN" Margin="10,10,68,83">
-        
-        <RichTextBox x:Name="TextBoxMain" Margin="10,105,0,0" TextChanged="RichTextBox_TextChanged">
+        Title="MainWindow" Height="583" Width="972" Initialized="WindowInitalized" FontFamily="Times New Roman" FontSize="14" Background="#FF282D38">
+    <Grid Height="NaN" Margin="10,10,10,-6">
+
+        <RichTextBox x:Name="TextBoxMain" Margin="10,105,10,10" FontFamily="Times New Roman" FontSize="14" Background="White">
             <FlowDocument>
                 <Paragraph>
-                    <Run Text="RichTextBox"
+                    <Run Text=""
                          />
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button x:Name="ButtonDelete" Content="Delete" HorizontalAlignment="Left" Margin="30,43,0,0" VerticalAlignment="Top" Click="ButtonDelete_Click" RenderTransformOrigin="0.554,0.622"/>
-        <CheckBox Content="/r/n" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxDelete" HorizontalAlignment="Left" Margin="0,68,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="ButtonUndo" Content="Undo" HorizontalAlignment="Left" Margin="196,77,0,0" VerticalAlignment="Top" Click="ButtonUndo_Click"/>
-        <Button x:Name="ButtonRedo" Content="Redo" HorizontalAlignment="Left" Margin="266,77,0,0" VerticalAlignment="Top" Click="ButtonRedo_Click"/>
+        <Button x:Name="ButtonReplace" Content="Replace
+                " HorizontalAlignment="Left" Margin="859,85,0,0" VerticalAlignment="Top" Click="ButtonReplace_Click" RenderTransformOrigin="0.554,0.622" Width="48" Background="#FF677AA4"/>
+        <TextBox x:Name="TextBoxOld" HorizontalAlignment="Left" Margin="824,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="118" Background="#FF677AA4" Height="19"/>
+        <Button x:Name="ButtonUndo" Content="Undo" HorizontalAlignment="Left" Margin="406,85,0,0" VerticalAlignment="Top" Click="ButtonUndo_Click"/>
+        <Button x:Name="ButtonRedo" Content="Redo" HorizontalAlignment="Center" Margin="0,85,0,0" VerticalAlignment="Top" Click="ButtonRedo_Click"/>
+        <TextBox x:Name="TextBoxNew" HorizontalAlignment="Left" Margin="824,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="118" Background="#FF677AA4" Height="19"/>
     </Grid>
 </Window>

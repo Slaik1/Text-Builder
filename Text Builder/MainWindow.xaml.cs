@@ -25,31 +25,21 @@ namespace Text_Builder
     {
         private TextBuilder TextBuilder;
 
-        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ButtonReplace_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        //private void WindowActivated(object sender, EventArgs e)
-        //{
-        //    TextBuilder=new TextBuilder(TextBoxMain);
-        //}
-
-        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
-        {
-            TextBuilder.DeleteSymbols(TextBoxDelete.Text);
+            TextBuilder.TextReplace(TextBoxOld.Text,TextBoxNew.Text );
         }
 
         private void ButtonUndo_Click(object sender, RoutedEventArgs e)
         {
             TextBoxMain.Undo();
-            TextBoxMain.Undo();
+
         }
 
         private void ButtonRedo_Click(object sender, RoutedEventArgs e)
         {
             TextBoxMain.Redo();
-            TextBoxMain.Redo();
+
         }
 
         private void WindowInitalized(object sender, EventArgs e)
