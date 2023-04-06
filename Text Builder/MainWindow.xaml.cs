@@ -19,13 +19,11 @@ namespace Text_Builder
         private void ButtonUndo_Click(object sender, RoutedEventArgs e)
         {
             TextBoxMain.Undo();
-
         }
 
         private void ButtonRedo_Click(object sender, RoutedEventArgs e)
         {
             TextBoxMain.Redo();
-
         }
 
         private void WindowInitalized(object sender, EventArgs e)
