@@ -10,17 +10,17 @@ namespace Text_Builder
     class TextBuilder
     {
         private RichTextBox rtBox;
+
         public TextBuilder(RichTextBox textBox)
         {
             this.rtBox = textBox;
         }
 
-        
-
         public void TextReplace(string strOld, string strNew)
-        { 
+        {
             if (strOld == "")
                 return;
+
             TextRange tr = new TextRange(rtBox.Document.ContentStart, rtBox.Document.ContentEnd);
             string? rtf;
             using (var memoryStream = new MemoryStream())
