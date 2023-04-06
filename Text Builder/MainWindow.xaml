@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Text_Builder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="MainWindow" Height="592" Width="992" ResizeMode="NoResize" Initialized="WindowInitalized">
+    <Grid Height="NaN" Margin="10,10,68,83">
+        
+        <RichTextBox x:Name="TextBoxMain" Margin="10,105,0,0" TextChanged="RichTextBox_TextChanged">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"
+                         />
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button x:Name="ButtonDelete" Content="Delete" HorizontalAlignment="Left" Margin="30,43,0,0" VerticalAlignment="Top" Click="ButtonDelete_Click" RenderTransformOrigin="0.554,0.622"/>
+        <CheckBox Content="/r/n" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxDelete" HorizontalAlignment="Left" Margin="0,68,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ButtonUndo" Content="Undo" HorizontalAlignment="Left" Margin="196,77,0,0" VerticalAlignment="Top" Click="ButtonUndo_Click"/>
+        <Button x:Name="ButtonRedo" Content="Redo" HorizontalAlignment="Left" Margin="266,77,0,0" VerticalAlignment="Top" Click="ButtonRedo_Click"/>
     </Grid>
 </Window>

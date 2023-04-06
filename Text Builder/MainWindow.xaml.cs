@@ -18,11 +18,43 @@ namespace Text_Builder
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
+    
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private TextBuilder TextBuilder;
+
+        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InitializeComponent();
+
+        }
+
+        //private void WindowActivated(object sender, EventArgs e)
+        //{
+        //    TextBuilder=new TextBuilder(TextBoxMain);
+        //}
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            TextBuilder.DeleteSymbols(TextBoxDelete.Text);
+        }
+
+        private void ButtonUndo_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxMain.Undo();
+            TextBoxMain.Undo();
+        }
+
+        private void ButtonRedo_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxMain.Redo();
+            TextBoxMain.Redo();
+        }
+
+        private void WindowInitalized(object sender, EventArgs e)
+        {
+            TextBuilder = new TextBuilder(TextBoxMain);
         }
     }
 }
